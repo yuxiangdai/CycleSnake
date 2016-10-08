@@ -1,5 +1,3 @@
-var socket // Socket connection
-
 $(document).ready(function(){
 	console.log("connected");
 	//Canvas stuff
@@ -7,41 +5,39 @@ $(document).ready(function(){
 	var ctx = canvas.getContext("2d");
 	var w = $("#canvas").width();
 	var h = $("#canvas").height();
-
+	
 	//Lets save the cell width in a variable for easy control
 	var cw = 10;
 	var d;
 	var food;
 	var score;
 
-	//Lets create the snake now
-	var snake_array; //an array of cells to make up the snake
 
-	// start of insert
-function create(){
-    socket = io.connect()
 
-    setEventHandlers()
-}
+	var socket;
 
-var setEventHandlers = function () {
-  // Socket connection successful
-  socket.on('connect', onSocketConnected)
 
-  // Socket disconnection
-  socket.on('disconnect', onSocketDisconnect)
 
-  // New player message received
-  socket.on('new player', onNewPlayer)
+	var setEventHandlers = function () {
+		  // Socket connection successful
+		  socket.on('connect', onSocketConnected)
 
-  // Player move message received
-  socket.on('move player', onMovePlayer)
+		  // Socket disconnection
+		  socket.on('disconnect', onSocketDisconnect)
 
-  // Player removed message received
-  socket.on('remove player', onRemovePlayer)
-}
+		  // New player message received
+		  socket.on('new player', onNewPlayer)
 
-// Socket connected
+		  // Player move message received
+		  socket.on('move player', onMovePlayer)
+
+		  // Player removed message received
+		  socket.on('remove player', onRemovePlayer)
+		}
+	socket = io.connect;
+	setEventHandlers();
+
+	// Socket connected
 function onSocketConnected () {
   console.log('Connected to socket server')
 
@@ -108,23 +104,10 @@ function update () {
       game.physics.arcade.collide(player, enemies[i].player)
     }
   }
-
-  if (cursors.left.isDown) {
-    player.angle -= 4
-  } else if (cursors.right.isDown) {
-    player.angle += 4
-  }
-
-  if (cursors.up.isDown) {
-    // The speed we'll travel at
-    currentSpeed = 300
-  } else {
-    if (currentSpeed > 0) {
-      currentSpeed -= 4
-    }
-  } // end of insert
-
-
+	
+	//Lets create the snake now
+	var snake_array; //an array of cells to make up the snake
+	
 	function init()
 	{
 		d = "right"; //default direction
@@ -132,14 +115,14 @@ function update () {
 		create_food(); //Now we can see the food particle
 		//finally lets display the score
 		score = 0;
-
+		
 		//Lets move the snake now using a timer which will trigger the paint function
 		//every 60ms
 		if(typeof game_loop != "undefined") clearInterval(game_loop);
 		game_loop = setInterval(paint, 60);
 	}
 	init();
-
+	
 	function create_snake()
 	{
 		var length = 5; //Length of the snake
@@ -150,18 +133,18 @@ function update () {
 			snake_array.push({x: i, y:0});
 		}
 	}
-
+	
 	//Lets create the food now
 	function create_food()
 	{
 		food = {
-			x: Math.round(Math.random()*(w-cw)/cw),
-			y: Math.round(Math.random()*(h-cw)/cw),
+			x: Math.round(Math.random()*(w-cw)/cw), 
+			y: Math.round(Math.random()*(h-cw)/cw), 
 		};
 		//This will create a cell with x/y between 0-44
 		//Because there are 45(450/10) positions accross the rows and columns
 	}
-
+	
 	//Lets paint the snake now
 	function paint()
 	{
@@ -171,7 +154,7 @@ function update () {
 		ctx.fillRect(0, 0, w, h);
 		ctx.strokeStyle = "black";
 		ctx.strokeRect(0, 0, w, h);
-
+		
 		//The movement code for the snake to come here.
 		//The logic is simple
 		//Pop out the tail cell and place it infront of the head cell
@@ -184,7 +167,7 @@ function update () {
 		else if(d == "left") nx--;
 		else if(d == "up") ny--;
 		else if(d == "down") ny++;
-
+		
 		//Lets add the game over clauses now
 		//This will restart the game if the snake hits the wall
 		//Lets add the code for body collision
@@ -196,7 +179,7 @@ function update () {
 			//Lets organize the code a bit now.
 			return;
 		}
-
+		
 		//Lets write the code to make the snake eat the food
 		//The logic is simple
 		//If the new head position matches with that of the food,
@@ -214,23 +197,23 @@ function update () {
 			tail.x = nx; tail.y = ny;
 		}
 		//The snake can now eat the food.
-
+		
 		snake_array.unshift(tail); //puts back the tail as the first cell
-
+		
 		for(var i = 0; i < snake_array.length; i++)
 		{
 			var c = snake_array[i];
 			//Lets paint 10px wide cells
 			paint_cell(c.x, c.y);
 		}
-
+		
 		//Lets paint the food
 		paint_cell(food.x, food.y);
 		//Lets paint the score
 		var score_text = "Score: " + score;
 		ctx.fillText(score_text, 5, h-5);
 	}
-
+	
 	//Lets first create a generic function to paint cells
 	function paint_cell(x, y)
 	{
@@ -239,7 +222,7 @@ function update () {
 		ctx.strokeStyle = "white";
 		ctx.strokeRect(x*cw, y*cw, cw, cw);
 	}
-
+	
 	function check_collision(x, y, array)
 	{
 		//This function will check if the provided x/y coordinates exist
@@ -251,7 +234,7 @@ function update () {
 		}
 		return false;
 	}
-
+	
 	//Lets add the keyboard controls now
 	$(document).keydown(function(e){
 		var key = e.which;
@@ -262,11 +245,12 @@ function update () {
 		else if(key == "40" && d != "up") d = "down";
 		//The snake is now keyboard controllable
 	})
-
-
-
-
-
-
-
+	
+	
+	
+	
+	
+	
+	
 });
+	

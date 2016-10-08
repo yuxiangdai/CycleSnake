@@ -244,10 +244,10 @@ function update () {
 		else if(key == "39" && d != "left") d = "right";
 		else if(key == "40" && d != "up") d = "down";
 		//The snake is now keyboard controllable
-	})
+	});
 	
 	
-	
+	});
 	
 	
 	

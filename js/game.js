@@ -34,7 +34,7 @@ $(document).ready(function(){
 		  // Player removed message received
 		  socket.on('remove player', onRemovePlayer)
 		}
-	socket = io.connect("http://localhost:3000");
+	socket = io.connect();
 	setEventHandlers();
 
 	// Socket connected

@@ -11,6 +11,99 @@ $(document).ready(function(){
 	var d;
 	var food;
 	var score;
+
+
+
+	var socket;
+
+
+
+	var setEventHandlers = function () {
+		  // Socket connection successful
+		  socket.on('connect', onSocketConnected)
+
+		  // Socket disconnection
+		  socket.on('disconnect', onSocketDisconnect)
+
+		  // New player message received
+		  socket.on('new player', onNewPlayer)
+
+		  // Player move message received
+		  socket.on('move player', onMovePlayer)
+
+		  // Player removed message received
+		  socket.on('remove player', onRemovePlayer)
+		}
+	socket = io.connect;
+	setEventHandlers();
+
+	// Socket connected
+function onSocketConnected () {
+  console.log('Connected to socket server')
+
+  // Send local player data to the game server
+  socket.emit('new player', { x: player.x, y: player.y, angle: player.angle })
+}
+
+// Socket disconnected
+function onSocketDisconnect () {
+  console.log('Disconnected from socket server')
+}
+
+// New player
+function onNewPlayer (data) {
+  console.log('New player connected:', data.id)
+
+  // Avoid possible duplicate players
+  var duplicate = playerById(data.id)
+  if (duplicate) {
+    console.log('Duplicate player!')
+    return
+  }
+
+  // Add new player to the remote players array
+  enemies.push(new RemotePlayer(data.id, game, player, data.x, data.y, data.angle))
+}
+
+// Move player
+function onMovePlayer (data) {
+  var movePlayer = playerById(data.id)
+
+  // Player not found
+  if (!movePlayer) {
+    console.log('Player not found: ', data.id)
+    return
+  }
+
+  // Update player position
+  movePlayer.player.x = data.x
+  movePlayer.player.y = data.y
+  movePlayer.player.angle = data.angle
+}
+
+// Remove player
+function onRemovePlayer (data) {
+  var removePlayer = playerById(data.id)
+
+  // Player not found
+  if (!removePlayer) {
+    console.log('Player not found: ', data.id)
+    return
+  }
+
+  removePlayer.player.kill()
+
+  // Remove player from array
+  enemies.splice(enemies.indexOf(removePlayer), 1)
+}
+
+function update () {
+  for (var i = 0; i < enemies.length; i++) {
+    if (enemies[i].alive) {
+      enemies[i].update()
+      game.physics.arcade.collide(player, enemies[i].player)
+    }
+  }
 	
 	//Lets create the snake now
 	var snake_array; //an array of cells to make up the snake

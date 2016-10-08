@@ -32,9 +32,16 @@ app.use('/', routes);
 app.use('/users', users);
 
 
-io.on('connection', function(){
+io.on('connection', function(socket){
   console.log('hello');
+
+  socket.on('score', function(data) {
+    console.log(data)
+    socket.broadcast.emit('score', data);
+  })
 });
+
+
 
 
 // // error handlers

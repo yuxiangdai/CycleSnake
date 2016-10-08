@@ -104,6 +104,7 @@ function update () {
       game.physics.arcade.collide(player, enemies[i].player)
     }
   }
+}
 	
 	//Lets create the snake now
 	var snake_array; //an array of cells to make up the snake
@@ -244,7 +245,7 @@ function update () {
 		else if(key == "39" && d != "left") d = "right";
 		else if(key == "40" && d != "up") d = "down";
 		//The snake is now keyboard controllable
-	})
+	});
 	
 	
 	

@@ -1,5 +1,6 @@
 
 
+
 $(document).ready(function(){
 	console.log("connected");
 	//Canvas stuff
@@ -36,6 +37,12 @@ $(document).ready(function(){
 		  // Player removed message received
 		  socket.on('remove player', onRemovePlayer)
 		}
+	
+	io.configure(function () { 
+		  io.set("transports", ["xhr-polling"]); 
+		  io.set("polling duration", 10); 
+		});
+	socket = new io.Socket();
 	socket = io.connect();
 	setEventHandlers();
 

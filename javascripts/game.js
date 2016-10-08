@@ -43,7 +43,7 @@ function onSocketConnected () {
   console.log('Connected to socket server')
 
   // Send local player data to the game server
-  socket.emit('new movePlayer', { x: movePlayer.player.x, y: movePlayer.player.y})
+  //socket.emit('new movePlayer', { x: movePlayer.player.x, y: movePlayer.player.y})
 }
 
 // Socket disconnected

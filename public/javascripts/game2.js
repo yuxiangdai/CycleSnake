@@ -207,7 +207,7 @@ $(document).ready(function() {
             var tail = { x: nx, y: ny };
             score++;
 
-            socket.emit('score', score);
+            //socket.emit('score', score);
             //Create new food
             create_food();
         } else {

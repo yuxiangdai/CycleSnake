@@ -13,7 +13,6 @@ $(document).ready(function() {
     var score;
     var socket;
     var c1;
-
     var setEventHandlers = function() {
         // Socket connection successful
         socket.on('connect', onSocketConnected)
@@ -114,7 +113,7 @@ $(document).ready(function() {
 		c1 = arr;
         //Lets paint 10px wide cells
         // paint_cell(c1.x, c1.y);
- 		
+
 
     };
 
@@ -133,6 +132,7 @@ $(document).ready(function() {
     var snake_array; //an array of cells to make up the snake
 
     function init() {
+        //var room = io.sockets.sockets;
         d = "right"; //default direction
         create_snake();
         create_food(); //Now we can see the food particle
@@ -224,11 +224,12 @@ $(document).ready(function() {
             //Lets paint 10px wide cells
             paint_cell(c.x, c.y);
         };
-
-        for (var i = 0; i < c1.length; i++) {
-            //Lets paint 10px wide cells
-            paint_cell(c1[i].x,c1[i].y);
-        };
+        if (c1 != undefined){
+            for (var i = 0; i < c1.length; i++) {
+                //Lets paint 10px wide cells
+                paint_cell(c1[i].x,c1[i].y);
+            };
+        }
                 //Lets paint the food
         paint_cell(food.x, food.y);
         //Lets paint the score
@@ -244,15 +245,28 @@ $(document).ready(function() {
         ctx.strokeRect(x * cw, y * cw, cw, cw);
     }
 
+    // This function checks if the two snakes will hit each other
     function check_collision(x, y, array) {
         //This function will check if the provided x/y coordinates exist
         //in an array of cells or not
         for (var i = 0; i < array.length; i++) {
-            if (array[i].x == x && array[i].y == y)
+            if (array[i].x == x && array[i].y == y){
                 return true;
+            }
         }
         return false;
     }
+
+    function check_duo_collision(){
+        for (var i = 0; i < snake_array.length; i++) {
+            var c = snake_array[i];
+            for (var i = 0; i < c1.length; i++) {
+                if (c.x == c1.x || c.y == c1.y){
+                    return true;
+                }
+            };
+        };
+    };
 
     //Lets add the keyboard controls now
     $(document).keydown(function(e) {

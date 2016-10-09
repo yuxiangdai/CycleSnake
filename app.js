@@ -39,6 +39,10 @@ io.on('connection', function(socket){
     console.log(data)
     socket.broadcast.emit('score', data);
   })
+
+  socket.on('snake', function(c1,c2) {
+    socket.broadcast.emit('snake', c1,c2);
+  })
 });
 
 

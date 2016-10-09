@@ -32,9 +32,20 @@ app.use('/', routes);
 app.use('/users', users);
 
 
-io.on('connection', function(){
+io.on('connection', function(socket){
   console.log('hello');
+
+  socket.on('score', function(data) {
+    console.log(data)
+    socket.broadcast.emit('score', data);
+  })
+
+  socket.on('snake', function(arr) {
+    socket.broadcast.emit('snake', arr);
+  })
 });
+
+
 
 
 // // error handlers
@@ -68,8 +79,8 @@ io.on('connection', function(){
 //   });
 // });
 
-server.listen(3000, function(){
-  console.log('listening on *:3000');
+server.listen(80, function(){
+  console.log('listening on *:80');
 });
 
 module.exports = app;

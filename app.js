@@ -40,8 +40,8 @@ io.on('connection', function(socket){
     socket.broadcast.emit('score', data);
   })
 
-  socket.on('snake', function(c1,c2) {
-    socket.broadcast.emit('snake', c1,c2);
+  socket.on('snake', function(arr) {
+    socket.broadcast.emit('snake', arr);
   })
 });
 

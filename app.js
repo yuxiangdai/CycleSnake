@@ -49,7 +49,13 @@ io.on('connection', function(socket){
 });
 
 
+app.get("/", function(req,res){
+   res.render("landing.ejs");
+});
 
+app.get("/game", function(req,res){
+   res.render("game.ejs");
+});
 
 // // error handlers
 
@@ -87,3 +93,4 @@ server.listen(80, function(){
 });
 
 module.exports = app;
+

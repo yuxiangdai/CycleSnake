@@ -15,19 +15,289 @@
 	
 	<!-- Latest compiled and minified JavaScript -->
 	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>
+
+  <link href="css/bootstrap.min.css" rel="stylesheet">
+ 
+    <!-- Custom Google Web Font -->
+    <link href="font-awesome/css/font-awesome.min.css" rel="stylesheet">
+    <link href='http://fonts.googleapis.com/css?family=Lato:100,300,400,700,900,100italic,300italic,400italic,700italic,900italic' rel='stylesheet' type='text/css'>
+  <link href='http://fonts.googleapis.com/css?family=Arvo:400,700' rel='stylesheet' type='text/css'>
+  
+    <!-- Custom CSS-->
+    <link href="css/general.css" rel="stylesheet">
+  
+   <!-- Owl-Carousel -->
+    <link href="css/custom.css" rel="stylesheet">
+  <link href="css/owl.carousel.css" rel="stylesheet">
+    <link href="css/owl.theme.css" rel="stylesheet">
+  <link href="css/style.css" rel="stylesheet">
+  <link href="css/animate.css" rel="stylesheet">
+  
+  <!-- Magnific Popup core CSS file -->
+  <link rel="stylesheet" href="css/magnific-popup.css"> 
+  
+  <script src="js/modernizr-2.8.3.min.js"></script>  <!-- Modernizr /-->
+  <!--[if IE 9]>
+    <script src="js/PIE_IE9.js"></script>
+  <![endif]-->
+  <!--[if lt IE 9]>    <script src="js/PIE_IE678.js"></script>
+  <![endif]-->
+
+  <!--[if lt IE 9]>
+    <script src="js/html5shiv.js"></script>
+  <![endif]-->
+
 </head>
-<body>
-<div class="container">
-	<h1>Snake Game</h1>
-	<h4>An app for business professionals and children alike</h4>
-	<!-- Lets make a simple snake game -->
-	<canvas id="canvas" width="450" height="450"></canvas>
+
+  
+  <!-- NavBar-->
+  <nav class="navbar-default" role="navigation">
+    <div class="container">
+      <div class="navbar-header">
+        <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-ex1-collapse">
+          <span class="sr-only">Toggle navigation</span>
+          <span class="icon-bar"></span>
+          <span class="icon-bar"></span>
+          <span class="icon-bar"></span>
+        </button>
+        <a class="navbar-brand" href="#home">CycleSnake</a>
+      </div>
+
+      <div class="collapse navbar-collapse navbar-right navbar-ex1-collapse">
+        <ul class="nav navbar-nav">
+          
+
+          <li class="menuItem"><a href="#credits">Credits</a></li>
+          <li class="menuItem"><a href="/game">Play</a></li>
+        </ul>
+      </div>
+       
+    </div>
+  </nav> 
+  
+  <!-- What is -->
+  <div id="whatis" class="content-section-b" style="border-top: 0">
+    <div class="container">
+
+      <div class="col-md-6 col-md-offset-3 text-center wrap_title">
+        <h2>CycleSnake</h2>
+        <p class="lead" style="margin-top:0">A Web Game for Everyone</p>
+        
+      </div>
+      
+      <div class="row">
+      
+        <div class="col-sm-4 wow fadeInDown text-center">
+          <img class="rotate" src="img/icon/tweet.svg" alt="Generic placeholder image">
+          <h3>Follow Me</h3>
+          <p class="lead">Studies have reported that commuters who have social interactions during their commute experience increased happiness</p>
+
+          <!-- <p><a class="btn btn-embossed btn-primary view" role="button">View Details</a></p> -->
+        </div><!-- /.col-lg-4 -->
+        
+        <div class="col-sm-4 wow fadeInDown text-center">
+          <img  class="rotate" src="img/icon/picture.svg" alt="Generic placeholder image">
+           <h3>The World Outside</h3>
+           <p class="lead">For children who are stuck in hospitals, there is a lack of everyday social interaction that they don't get to experience due to their confines </p>
+           <!-- <p><a class="btn btn-embossed btn-primary view" role="button">View Details</a></p> -->
+        </div><!-- /.col-lg-4 -->
+        
+        <div class="col-sm-4 wow fadeInDown text-center">
+          <img  class="rotate" src="img/icon/retina.svg" alt="Generic placeholder image">
+           <h3>Satisfaction</h3>
+          <p class="lead">CycleSnake works to satisfy the need for social interaction that is present in today's world, where we are constantly far too busy</p>
+          <!-- <p><a class="btn btn-embossed btn-primary view" role="button">View Details</a></p> -->
+        </div><!-- /.col-lg-4 -->
+        
+      </div><!-- /.row -->
+        
+      <div class="row tworow">
+      
+        <div class="col-sm-4  wow fadeInDown text-center">
+          <img class="rotate" src="img/icon/laptop.svg" alt="Generic placeholder image">
+          <h3>Responsive</h3>
+          <p class="lead">CycleSnake leverages socket.io, express.js and node.js to deliver real-time bidirectional gameplay. Hosted on Cycle, CycleSnake has some of the most efficient Docker images on the planet, given its newly-developed node.js Docker images</p>
+         <!-- <p><a class="btn btn-embossed btn-primary view" role="button">View Details</a></p> -->
+        </div><!-- /.col-lg-4 -->
+        
+        <div class="col-sm-4 wow fadeInDown text-center">.
+          <img  class="rotate" src="img/icon/map.svg" alt="Generic placeholder image">
+           <h3>Local Impact</h3>
+           <p class="lead">You're not only curing your boredom while playing CycleSnake; you're also helping to make the lives of those who lack mobility and the ability to interact socially an outlet to do so.</p>
+           <!-- <p><a class="btn btn-embossed btn-primary view" role="button">View Details</a></p> -->
+        </div><!-- /.col-lg-4 -->
+        
+        <div class="col-sm-4 wow fadeInDown text-center">
+          <img  class="rotate" src="img/icon/browser.svg" alt="Generic placeholder image">
+           <h3>Right in your Browser</h3>
+         <p class="lead">CycleSnake was developed as a web application, which means that it's easy for you to easily access the game given a computer and internet connection</p>
+          <!-- <p><a class="btn btn-embossed btn-primary view" role="button">View Details</a></p> -->
+        </div><!-- /.col-lg-4 -->
+        
+      </div><!-- /.row -->
+    </div>
+  </div>
+  
+  <!-- Use it -->
+    <div id ="useit" class="content-section-a">
+
+        <div class="container">
+      
+            <div class="row">
+      
+        <div class="col-sm-6 pull-right wow fadeInRightBig">
+                    <img class="img-responsive " src="img/ipad.png" alt="">
+                </div>
+        
+                <div class="col-sm-6 wow fadeInLeftBig"  data-animation-delay="200">   
+                    <h3 class="section-heading">Full Responsive</h3>
+          <div class="sub-title lead3">CycleSnake combines the old with the new; the game of snake with cutting-edge technologies</div>
+                    <p class="lead">
+            In his igitur partibus duabus nihil erat, quod Zeno commuta rest gestiret. 
+            Sed virtutem ipsam inchoavit, nihil ampliusuma. Scien tiam pollicentur, 
+            uam non erat mirum sapientiae lorem cupido
+            patria esse cariorem. Quae qui non vident, nihilamane umquam magnum ac cognitione.
+          </p>
+
+           <p><a class="btn btn-embossed btn-primary" href="/game" role="button">Play Now</a>         
+           </div>   
+            </div>
+        </div>
+        <!-- /.container -->
+    </div>
+  
+  <!-- Credits -->
+  <div id="credits" class="content-section-a" style:"margin-bottom: 70px;">
+    <div class="container">
+      <div class="row">
+      
+      <div class="col-md-6 col-md-offset-3 text-center wrap_title">
+        <h2>Credits</h2>
+        <p class="lead" style="margin-top:0">A special thanks to Death.</p>
+       </div>
+       
+        <div class="col-sm-6  block wow bounceIn">
+          <div class="row">
+            <div class="col-md-4 box-icon rotate"> 
+              <i class="fa fa-desktop fa-4x "> </i> 
+            </div>
+            <div class="col-md-8 box-ct">
+              <h3> Bootstrap </h3>
+              <p>  The most popular HTML, CSS, and JS framework for developing responsive, mobile first projects on the web. </p>
+            </div>
+          </div>
+        </div>
+        <div class="col-sm-6 block wow bounceIn">
+          <div class="row">
+            <div class="col-md-4 box-icon rotate"> 
+            <i class="fa fa-picture-o fa-4x "> </i> 
+            </div>
+            <div class="col-md-8 box-ct">
+            <h3> Socket.io </h3>
+            <p> Featuring the fastest and most reliable real-time engine, Socket.IO enables real-time bidirectional event-based communication</p> 
+            </div>
+          </div>
+        </div>
+      </div>
+      
+      <div class="row tworow">
+        <div class="col-sm-6  block wow bounceIn">
+          <div class="row">
+            <div class="col-md-4 box-icon rotate"> 
+              <i class="fa fa-magic fa-4x "> </i> 
+            </div>
+            <div class="col-md-8 box-ct">
+              <h3> Cycle </h3>
+              <p> Intelligent, automatic global scaling and redundancy for both an additional layer of security and your peace of mind; Cycle makes it easier to deploy, manage, and monitor your applications without the need for a stack of third party services. </p>
+            </div>
+          </div>
+        </div>
+        <div class="col-sm-6 block wow bounceIn">
+          <div class="row">
+            <div class="col-md-4 box-icon rotate"> 
+            <i class="fa fa-heart fa-4x "> </i> 
+            </div>
+            <div class="col-md-8 box-ct">
+            <h3> Node.js</h3>
+            <p> Event-driven I/O server-side JavaScript environment based on V8. Node.js uses an event-driven, non-blocking I/O model that makes it lightweight and efficient. <p> 
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  
+ 
+  
+  
+  
+  
+    <footer>
+      <div class="container">
+        <div class="row">
+          <div class="col-md-7">
+            <p>Vuoi ricevere news su altri template?<br/>
 
 
 
-	<button class="btn btn-default center-block" type="submit">Multiplayer</button>
-	<button class="btn btn-default center-block" type="submit">One on One</button>
-</div>
+              Visita Andrea Galanti.it e vedrai tutte le news riguardanti nuovi Theme!<br/>
+              Go to: <a  href="http://andreagalanti.it" target="_blank">andreagalanti.it</a>
+            </p>
+      
+      <!-- LICENSE -->
+      <a rel="cc:attributionURL" href="http://www.andreagalanti.it/flatfy"
+       property="dc:title">Flatfy Theme </a> by
+       <a rel="dc:creator" href="http://www.andreagalanti.it"
+       property="cc:attributionName">Andrea Galanti</a>
+       is licensed to the public under 
+       <BR>the <a rel="license"
+       href="http://creativecommons.org/licenses/by-nc/3.0/it/deed.it">Creative
+       Commons Attribution 3.0 License - NOT COMMERCIAL</a>.
+       
+     
+          </div> <!-- /col-xs-7 -->
 
+          <div class="col-md-5">
+            <div class="footer-banner">
+              <h3 class="footer-title">CycleSnake</h3>
+              <ul>
+                <li>31 King's College Circle</li>
+                <li>Toronto, ON, Canada</li>
+                <li>Phone: XXX-XXX-XXXX</li>
+                <li>Fax: XXX-XXX-YYYY</li>
+
+            </div>
+          </div>
+        </div>
+      </div>
+    </footer>
+
+    <!-- JavaScript -->
+    <script src="js/jquery-1.10.2.js"></script>
+    <script src="js/bootstrap.js"></script>
+  <script src="js/owl.carousel.js"></script>
+  <script src="js/script.js"></script>
+  <!-- StikyMenu -->
+  <script src="js/stickUp.min.js"></script>
+  <script type="text/javascript">
+    jQuery(function($) {
+    $(document).ready( function() {
+      $('.navbar-default').stickUp();
+      
+    });
+    });
+  
+  </script>
+  <!-- Smoothscroll -->
+  <script type="text/javascript" src="js/jquery.corner.js"></script> 
+  <script src="js/wow.min.js"></script>
+  <script>
+   new WOW().init();
+  </script>
+  <script src="js/classie.js"></script>
+  <script src="js/uiMorphingButton_inflow.js"></script>
+  <!-- Magnific Popup core JS file -->
+  <script src="js/jquery.magnific-popup.js"></script> 
 </body>
+
 </html>

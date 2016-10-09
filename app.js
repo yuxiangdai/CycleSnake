@@ -57,6 +57,10 @@ app.get("/game", function(req,res){
    res.render("game.ejs");
 });
 
+app.get("/onevsone", function(req,res){
+   res.render("onevsone.ejs");
+});
+
 // // error handlers
 
 // // development error handler

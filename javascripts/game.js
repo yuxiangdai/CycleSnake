@@ -11,8 +11,8 @@ $(document).ready(function() {
     var d;
     var food;
     var score;
-
     var socket;
+    var c1;
 
     var setEventHandlers = function() {
         // Socket connection successful
@@ -109,11 +109,12 @@ $(document).ready(function() {
 
     }
 
-    function onSnake(c1, c2) {
+    function onSnake(arr) {
         //socket.emit('snake', c1, c2);
-
+		c1 = arr;
         //Lets paint 10px wide cells
-        paint_cell(c1, c2);
+        // paint_cell(c1.x, c1.y);
+ 		
 
     };
 
@@ -216,14 +217,19 @@ $(document).ready(function() {
         //The snake can now eat the food.
 
         snake_array.unshift(tail); //puts back the tail as the first cell
+		socket.emit('snake', snake_array);
 
         for (var i = 0; i < snake_array.length; i++) {
             var c = snake_array[i];
-            socket.emit('snake', c.x, c.y);
             //Lets paint 10px wide cells
             paint_cell(c.x, c.y);
         };
-        //Lets paint the food
+
+        for (var i = 0; i < c1.length; i++) {
+            //Lets paint 10px wide cells
+            paint_cell(c1[i].x,c1[i].y);
+        };
+                //Lets paint the food
         paint_cell(food.x, food.y);
         //Lets paint the score
         var score_text = "Score: " + score;
@@ -266,3 +272,4 @@ $(document).ready(function() {
 
 
 });
+

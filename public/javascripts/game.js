@@ -13,6 +13,8 @@ $(document).ready(function() {
     var score;
     var socket;
     var c1;
+        //Lets create the snake now
+    var snake_array; //an array of cells to make up the snake
     var setEventHandlers = function() {
         // Socket connection successful
         socket.on('connect', onSocketConnected)
@@ -128,8 +130,7 @@ $(document).ready(function() {
 
 
 
-    //Lets create the snake now
-    var snake_array; //an array of cells to make up the snake
+
 
     function init() {
         //var room = io.sockets.sockets;
@@ -222,32 +223,34 @@ $(document).ready(function() {
         for (var i = 0; i < snake_array.length; i++) {
             var c = snake_array[i];
             //Lets paint 10px wide cells
+            ctx.fillStyle = "blue";
             paint_cell(c.x, c.y);
         };
         if (c1 != undefined){
             for (var i = 0; i < c1.length; i++) {
                 //Lets paint 10px wide cells
+                ctx.fillStyle = "red";
                 paint_cell(c1[i].x,c1[i].y);
             };
         }
-                //Lets paint the food
+        //Set's color of food to green
+        ctx.fillStyle = "green";
         paint_cell(food.x, food.y);
-        //Lets paint the score
+        //Set's color of food to black
+        ctx.fillStyle = "black";
         var score_text = "Score: " + score;
         ctx.fillText(score_text, 5, h - 5);
     }
 
     //Lets first create a generic function to paint cells
     function paint_cell(x, y) {
-        ctx.fillStyle = "blue";
         ctx.fillRect(x * cw, y * cw, cw, cw);
         ctx.strokeStyle = "white";
         ctx.strokeRect(x * cw, y * cw, cw, cw);
     }
 
-    // This function checks if the two snakes will hit each other
+    //This function will check if the provided x/y coordinates exist
     function check_collision(x, y, array) {
-        //This function will check if the provided x/y coordinates exist
         //in an array of cells or not
         for (var i = 0; i < array.length; i++) {
             if (array[i].x == x && array[i].y == y){
@@ -257,17 +260,23 @@ $(document).ready(function() {
         return false;
     }
 
+    // This function checks if the two snakes will hit each other
     function check_duo_collision(){
-        for (var i = 0; i < snake_array.length; i++) {
-            var c = snake_array[i];
-            if (c1 != undefined){
-            for (var i = 0; i < c1.length; i++) {
-                if (c.x == c1.x || c.y == c1.y){
-                    return true;
-                    }
-                };
-            }
-        };
+        console.log(snake_array)
+        console.log(snake_array.length)
+        // Edge Case someone purposely tries it. Don't.
+        if (snake_array.length > 6){
+            for (var j = 0; j < snake_array.length; j++) {
+                if (c1 != undefined){
+                    //console.log(c.x,c1.x);
+                    for (var i = 0; i < c1.length; i++) {
+                        if (snake_array[j].x == c1[i].x && snake_array[j].y == c1[i].y){
+                            return true;
+                        }
+                    };
+                }
+            };
+        }
     };
 
     //Lets add the keyboard controls now
@@ -280,11 +289,5 @@ $(document).ready(function() {
         else if (key == "40" && d != "up") d = "down";
         //The snake is now keyboard controllable
     });
-
-
-
-
-
-
 
 });

@@ -33,6 +33,9 @@ $(document).ready(function() {
         //Player scores
         socket.on('score', onScore)
 
+        //Snake length
+        socket.on('snake', onSnake);
+
     };
 
     socket = io.connect();
@@ -41,8 +44,8 @@ $(document).ready(function() {
     // Socket connected
     function onSocketConnected() {
         console.log('Connected to socket server')
-        // Send local player data to the game server
-        // socket.emit('new movePlayer', { x: data.x, y: data.y })
+            // Send local player data to the game server
+            // socket.emit('new movePlayer', { x: data.x, y: data.y })
     }
 
     // Socket disconnected
@@ -97,19 +100,22 @@ $(document).ready(function() {
     }
 
     function onScore(msg) {
-    	console.log(msg);
-  	    	if(msg > score){
-        		console.log('0');
-        		score = msg;
-        	}
-        	else if (msg = score){
-        		console.log('1');
-        		score++;
-        	} else {
-        		console.log('2');
-        	};
+        console.log(msg);
+        if (msg > score) {
+            score = msg;
+            score++;
+        } else {
+        };
 
     }
+
+    function onSnake(c1, c2) {
+        //socket.emit('snake', c1, c2);
+
+        //Lets paint 10px wide cells
+        paint_cell(c1, c2);
+
+    };
 
     function update() {
         for (var i = 0; i < enemies.length; i++) {
@@ -213,10 +219,10 @@ $(document).ready(function() {
 
         for (var i = 0; i < snake_array.length; i++) {
             var c = snake_array[i];
+            socket.emit('snake', c.x, c.y);
             //Lets paint 10px wide cells
             paint_cell(c.x, c.y);
-        }
-
+        };
         //Lets paint the food
         paint_cell(food.x, food.y);
         //Lets paint the score

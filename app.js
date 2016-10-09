@@ -33,7 +33,10 @@ app.use('/users', users);
 
 
 io.on('connection', function(socket){
-  console.log('hello');
+    //var srvSockets = io.sockets.sockets;
+    //console.log(srvSockets);
+    //console.log(Object.keys(srvSockets).length);
+    console.log('Hello World');
 
   socket.on('score', function(data) {
     console.log(data)

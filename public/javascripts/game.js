@@ -260,11 +260,13 @@ $(document).ready(function() {
     function check_duo_collision(){
         for (var i = 0; i < snake_array.length; i++) {
             var c = snake_array[i];
+            if (c1 != undefined){
             for (var i = 0; i < c1.length; i++) {
                 if (c.x == c1.x || c.y == c1.y){
                     return true;
-                }
-            };
+                    }
+                };
+            }
         };
     };
 

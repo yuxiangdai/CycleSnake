@@ -191,7 +191,7 @@ $(document).ready(function() {
         //This will restart the game if the snake hits the wall
         //Lets add the code for body collision
         //Now if the head of the snake bumps into its body, the game will restart
-        if (nx == -1 || nx == w / cw || ny == -1 || ny == h / cw || check_collision(nx, ny, snake_array)) {
+        if (nx == -1 || nx == w / cw || ny == -1 || ny == h / cw || check_collision(nx, ny, snake_array) || check_duo_collision()) {
             //restart game
             init();
             //Lets organize the code a bit now.
